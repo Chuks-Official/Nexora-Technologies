@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SERVICES | NEXORA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="icon" href="NEXORA.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #111;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideDown 1s ease-in-out;
+    }
+    .logo {
+      font-size: 1.8em;
+      color: #00bfff;
+      font-weight: bold;
+     
+    }
+    nav {
+      display: flex;
+      gap: 1em;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #00bfff;
+      transform: scale(1.1);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8em;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .hero {
+      padding: 4em 1em 2em;
+      background: linear-gradient(to right, #000, #020f18);
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: #00bfff;
+    }
+    .hero p {
+      margin-top: 1em;
+      font-size: 1.2rem;
+      color: #ccc;
+      animation: fadeIn 2s ease-in-out 1s both;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2em;
+      padding: 2em;
+    }
+    .gallery div {
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 1em;
+      transition: transform 0.4s;
+    }
+    .gallery img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      transition: transform 0.4s ease-in-out;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      animation: pulse 0.8s;
+    }
+    .caption {
+      margin-top: 0.5em;
+      font-size: 1.1em;
+      color: #00bfff;
+      animation: fadeInUp 1s;
+    }
+    .cta-button {
+      margin-top: 0.7em;
+      padding: 0.6em 1.2em;
+      background: #00bfff;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta-button:hover {
+      background: #00a0e6;
+      transform: scale(1.05);
+      animation: pulse 0.5s;
+    }
+    footer {
+      background: #111;
+      padding: 1.5em;
+      text-align: center;
+      margin-top: auto;
+      animation: slideUp 1.5s ease-in-out;
+    }
+    .social-icons a {
+      margin: 0 0.5em;
+      color: #00bfff;
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+      animation: bounce 0.5s;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff; }
+      to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff; }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #111;
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      nav.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NEXORA</div>
+    <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
+    <nav id="navLinks">
+      <a href="NEXORA.html">Home</a>
+      <a href="aboutnexora.html">About Us</a>
+      <a href="nexoraservices.html" class="active">Services</a>
+      <a href="nexoraproducts.html">Products</a>
+      <a href="nexorablog.html">Blog</a>
+      <a href="nexoracontact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero animate__animated animate__fadeInUp">
+    <h1>Our Services</h1>
+    <p>We provide top-notch tech services at affordable prices to help your brand grow faster and smarter.</p>
+  </section>
+
+  <section class="gallery">
+    <div class="animate-on-scroll animate__animated animate__zoomIn">
+      <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Web Dev">
+      <p class="caption">Web Development</p>
+      <p>We build modern, responsive, and high-performing websites tailored to your brand and goals. From personal portfolios to advanced company platforms, we deliver excellence.</p>
+    </div>
+    <div class="animate-on-scroll animate__animated animate__zoomIn">
+      <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Consulting">
+      <p class="caption">Business Consultation</p>
+      <p>
+        We help startups and businesses develop winning strategies, improve workflows, and unlock growth through expert consultation.
+      </p>
+    </div>
+    <div class="animate-on-scroll animate__animated animate__zoomIn">
+      <img src="https://images.pexels.com/photos/6476783/pexels-photo-6476783.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AI Learning">
+      <p class="caption">AI Learning</p>
+      <p>We train and tutor individuals on AI to become outstanding in these fields.</p>
+    </div>
+    <div lass="animate-on-scroll animate__animated animate__zoomIn">
+      <img src="https://images.pexels.com/photos/7661590/pexels-photo-7661590.jpeg?auto=compress&cs=tinysrgb&w=600">
+      <p class="caption">Branding & Graphics</h3>
+      <p>We design creative logos, flyers, posters, and digital branding kits that speak for your business and attract attention in today's digital world.</p>
+    </div>
+    <div class="animate-on-scroll animate__animated animate__zoomIn">
+      <img src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Web Hosting">
+      <p class="caption">Web Hosting</p>
+      <p>
+        Reliable and secure web hosting services to keep your website online, fast, and accessible 24/7 with professional support.
+      </p>
+    </div>
+    <div class="animate-on-scroll animate__animated animate__zoomIn">
+      <img src="https://images.pexels.com/photos/3803517/pexels-photo-3803517.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Management">
+      <p class="caption">Web Management</p>
+      <p>
+        Comprehensive web management solutions including updates, security monitoring, content management, and performance optimization to keep your site running smoothly.
+      </p>
+    </div>
+  </section>
+
+  <section class="hero animate__animated animate__fadeIn">
+    <h1>Book a Class</h1>
+    <p>Ready to level up? Choose a training and begin your tech journey with us!</p>
+  </section>
+
+  <section class="gallery">
+    <div class="animate-on-scroll animate__animated animate__slideIn">
+      <img src="https://images.pexels.com/photos/6502328/pexels-photo-6502328.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Web Class">
+      <p class="caption">Join Our Web Development Class</p>
+      <button class="cta-button" onclick="location.href='https://wa.me/2349049720367'">Book Web Dev Class</button>
+    </div>
+    <div class="animate-on-scroll animate__animated animate__slideIn">
+      <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AI Class">
+      <p class="caption">Join Our Artificial Intelligence Class</p>
+      <button class="cta-button" onclick="location.href='https://wa.me/2349049720367'">Book AI Class</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/2349049720367"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:nexorastech@gmail.com" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      
+    </div>
+    <p>© 2025 NEXORA. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+
+    // Scroll animation using IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate__fadeInUp");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".animate-on-scroll").forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BLOG | NEXORA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="icon" href="NEXORA.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #111;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideDown 1s ease-in-out;
+    }
+    .logo {
+      font-size: 1.8em;
+      color: #00bfff;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      gap: 1em;
+      transition: all 0.5s ease-in-out;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+    nav a:hover, nav a.active {
+      color: #00bfff;
+      transform: scale(1.1);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8em;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    main.blog-container {
+      flex: 1;
+      padding: 3em 2em;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeIn 2s ease-in-out;
+      width: 100%;
+    }
+
+    .blog-post {
+      display: flex;
+      gap: 1.5em;
+      background: #111;
+      padding: 1.5em;
+      border-radius: 10px;
+      margin-bottom: 2em;
+      box-shadow: 0 0 10px #00bfff33;
+      transition: background 0.3s ease;
+    }
+    .blog-post:hover {
+      background: #001f3f;
+    }
+
+    .post-image {
+      flex-shrink: 0;
+      width: 150px;
+      height: 100px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 0 8px #00bfffaa;
+    }
+
+    .post-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .post-title {
+      font-size: 1.4rem;
+      color: #00bfff;
+      margin-bottom: 0.5em;
+    }
+    .post-snippet {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 0.8em;
+      line-height: 1.4;
+    }
+    .read-more {
+      align-self: flex-start;
+      text-decoration: none;
+      color: #00bfff;
+      font-weight: 600;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .read-more:hover {
+      border-color: #00bfff;
+    }
+    .hero {
+      padding: 4em 1em 2em;
+      background: linear-gradient(to right, #000, #020f18);
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: #00bfff;
+    }
+    .hero p {
+      margin-top: 1em;
+      font-size: 1.2rem;
+      color: #ccc;
+      animation: fadeIn 2s ease-in-out 1s both;
+    }
+    footer {
+      background: #111;
+      padding: 1.5em;
+      text-align: center;
+      margin-top: auto;
+      animation: slideUp 1.5s ease-in-out;
+    }
+    .social-icons a {
+      margin: 0 0.5em;
+      color: #00bfff;
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #111;
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      nav.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+
+      .blog-post {
+        flex-direction: column;
+      }
+      .post-image {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-left: 1em;
+        padding-right: 1em;
+      }
+      .post-title {
+        font-size: 1.2rem;
+      }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NEXORA</div>
+    <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
+    <nav id="navLinks">
+      <a href="NEXORA.html">Home</a>
+      <a href="aboutnexora.html">About Us</a>
+      <a href="nexoraservices.html">Services</a>
+      <a href="nexoraproducts.html">Products</a>
+      <a href="nexorablog.html" class="active">Blog</a>
+      <a href="nexoracontact.html">Contact</a>
+    </nav>
+  </header>
+<section class="hero">
+  <h1>NEXORA BLOG</h1>
+  <p>Welcome To NEXORA Blog. Discover innovations and trends in technology.</p>
+
+</section>
+  <main class="blog-container">
+    <article class="blog-post">
+      <img src="https://images.pexels.com/photos/18966448/pexels-photo-18966448/free-photo-of-logitech-g432-gaming-headset-next-to-a-controller.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tech Innovations" class="post-image" />
+      <div class="post-content">
+        <h2 class="post-title">Top 5 Tech Innovations of 2025</h2>
+        <p class="post-snippet">
+          Discover the latest breakthroughs in AI, robotics, and sustainable technology that are shaping the future. These innovations are not only transforming industries but also everyday lives...
+        </p>
+        <a href="?" class="read-more">Coming Soon</a>
+      </div>
+    </article>
+
+    <article class="blog-post">
+      <img src="https://images.pexels.com/photos/219701/pexels-photo-219701.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AI and Robotics" class="post-image" />
+      <div class="post-content">
+        <h2 class="post-title">AI and Robotics: A New Era</h2>
+        <p class="post-snippet">
+          AI-powered robots are revolutionizing manufacturing, healthcare, and even education. Explore how these smart machines collaborate with humans to boost productivity and safety...
+        </p>
+        <a href="?" class="read-more">Coming Soon</a>
+      </div>
+    </article>
+
+    <article class="blog-post">
+      <img src="https://images.pexels.com/photos/8721322/pexels-photo-8721322.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Futuristic Gadgets" class="post-image" />
+      <div class="post-content">
+        <h2 class="post-title">Futuristic Gadgets You Need to Know About</h2>
+        <p class="post-snippet">
+          From wearable tech to smart home devices, this blog covers the coolest gadgets that will make your life easier and more connected in the years to come...
+        </p>
+        <a href="?" class="read-more">Coming Soon</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/2349049720367"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:nexorastech@gmail.com" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      
+    </div>
+    <p>&copy; 2025 NEXORA. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HOME | NEXORA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+ <link rel="icon" href="NEXORA.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #111;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideDown 1s ease-in-out;
+    }
+    .logo {
+      font-size: 1.8em;
+      color: #00bfff;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      gap: 1em;
+      transition: all 0.5s ease-in-out;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #00bfff;
+      transform: scale(1.1);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8em;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .hero {
+      padding: 4em 1em;
+      background: linear-gradient(to right, #000, #020f18);
+      animation: fadeIn 2s ease-in-out;
+      overflow-x: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: #00bfff;
+    }
+    .hero p {
+      margin-top: 1em;
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #ddd;
+      animation: fadeIn 4s ease-in-out 1s both;
+    }
+    .hero .subtext {
+      margin-top: 0.5em;
+      font-size: 1rem;
+      color: #bbb;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1em;
+      padding: 2em;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.4s;
+    }
+    .gallery div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* control the height consistently */
+  object-fit: cover;
+}
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .caption {
+      text-align: center;
+      padding-top: 0.5em;
+      font-size: 1em;
+    }
+
+    footer {
+      background: #111;
+      padding: 1.5em;
+      text-align: center;
+      margin-top: auto;
+      animation: slideUp 1.5s ease-in-out;
+    }
+    .social-icons a {
+      margin: 0 0.5em;
+      color: #00bfff;
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #111;
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      nav.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-left: 1em;
+        padding-right: 1em;
+      }
+      .hero h1 {
+        font-size: clamp(1.4rem, 7vw, 2rem);
+        white-space: normal;
+        overflow-wrap: break-word;
+        width: 100%;
+      }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NEXORA</div>
+    <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
+    <nav id="navLinks">
+      <a href="NEXORA.html">Home</a>
+      <a href="aboutnexora.html" class="active">About Us</a>
+      <a href="nexoraservices.html">Services</a>
+      <a href="nexoraproducts.html">Products</a>
+      <a href="nexorablog.html">Blog</a>
+      <a href="nexoracontact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 id="typeText" class="animate__animated animate__bounce">Welcome to NEXORA TECHNOLOGIES</h1>
+    <p>Your future in tech starts here. Explore innovation, AI, web development, robotics, and more as we shape the world of tomorrow.</p>
+    <div class="subtext"><h2>Join us on a journey through next-gen solutions, futuristic inventions, and limitless potential.</h2></div>
+  </section>
+
+  <section class="gallery">
+    <div>
+      <img  class="animate-on-scroll animate__animated animate__zoomIn" src="https://images.pexels.com/photos/7108722/pexels-photo-7108722.jpeg?auto=compress&cs=tinysrgb&w=600" alt="NEXORA Image 1">
+      <p class="caption">Innovative Tech Solutions</p>
+    </div>
+    <div>
+      <img class="animate-on-scroll animate__animated animate__zoomIn" src="https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=600" alt="NEXORA Image 2" style="height: 300px;">
+      <p class="caption">Web Development</p>
+    </div>
+    <div>
+      <img  class="animate-on-scroll animate__animated animate__zoomIn" src= "https://images.pexels.com/photos/8566467/pexels-photo-8566467.jpeg?auto=compress&cs=tinysrgb&w=600" alt="NEXORA Image 3" style="height: 300px;">
+      <p class="caption">AI LEARNING</p>
+    </div>
+  </section>
+  
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/2349049720367"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://tiktok.com/nexoratech"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="nexorastech@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>&copy; 2025 NEXORA. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

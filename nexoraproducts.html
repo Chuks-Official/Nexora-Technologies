@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PRODUCTS | NEXORA</title>
+
+  <!-- Font‑Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Animate.css (already referenced in other pages) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <link rel="icon" href="NEXORA.png">
+
+  <style>
+    /* ===== core palette / reset (same as Home page) ===== */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    html,body{height:100%;background:#000;color:#fff;display:flex;flex-direction:column;scroll-behavior:smooth;}
+
+    /* ===== header / nav ===== */
+    header{background:#111;padding:1em 2em;display:flex;justify-content:space-between;align-items:center;
+           position:sticky;top:0;z-index:100;animation:slideDown 1s ease-in-out;}
+    .logo{font-size:1.8em;color:#00bfff;font-weight:bold;}
+    nav{display:flex;gap:1em;transition:.5s;}
+    nav a{color:#fff;text-decoration:none;transition:.3s;}
+    nav a:hover,nav a.active{color:#00bfff;transform:scale(1.1);}
+    .hamburger{display:none;font-size:1.8em;color:#fff;cursor:pointer;}
+
+    /* ===== hero ===== */
+    .hero{padding:4em 1em;text-align:center;background:linear-gradient(90deg,#000,#020f18);
+          animation:fadeIn 2s ease-in-out;}
+    .hero h1{font-size:clamp(1.8rem,5vw,2.5rem);color:#00bfff;}
+    .hero p{margin-top:1em;font-size:1.2rem;max-width:700px;color:#ddd;animation:fadeIn 2s ease 1s both;}
+
+    /* ===== grid ===== */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1em;padding:2em;
+             animation:fadeIn 2s ease-in-out;}
+    .gallery div{display:flex;flex-direction:column;align-items:center;background:#111;border-radius:10px;
+                 padding:.8em;box-shadow:0 0 10px #00bfff33;transition:.4s;}
+    .gallery div:hover{transform:translateY(-4px);box-shadow:0 0 20px #00bfff88;}
+    .gallery img{width:100%;height:auto;max-height:500px;object-fit:cover;border-radius:10px;transition:.4s;}
+    .gallery img:hover{transform:scale(1.05);}
+    .caption{padding-top:.5em;font-size:1.05em;color:#00bfff;font-weight:600;text-align:center;}
+    .price{font-size:1em;margin-top:.3em;text-align:center;}
+    .price .old{color:#777;text-decoration:line-through;margin-right:.4em;}
+    .price .new{color:#00bfff;font-weight:bold;}
+    .desc{font-size:.9em;color:#bbb;margin-top:.3em;text-align:center;}
+
+    /* ===== footer & icons ===== */
+    footer{background:#111;padding:1.5em;text-align:center;margin-top:auto;animation:slideUp 1.5s ease-in-out;}
+    .social-icons a{margin:0 .5em;color:#00bfff;font-size:1.5em;transition:.3s;}
+    .social-icons a:hover{transform:scale(1.2);}
+    .buy-now {
+  margin-top: 0.6em;
+  background: #00bfff;
+  color: #000;
+  padding: 0.5em 1.2em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.buy-now:hover {
+  background: #00a4cc;
+  transform: scale(1.05);
+}
+
+
+    /* ===== responsive nav ===== */
+    @media(max-width:768px){
+      nav{display:none;flex-direction:column;position:absolute;top:70px;left:0;width:100%;background:#111;
+          animation:fadeIn .8s ease-in-out;}
+      nav.show{display:flex;}
+      .hamburger{display:block;}
+    }
+    @media(max-width:480px){
+      body{padding:0 1em;}
+      .hero h1{font-size:clamp(1.4rem,7vw,2rem);}
+    }
+
+    /* ===== keyframes ===== */
+    @keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+    @keyframes slideUp{from{transform:translateY(100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+  </style>
+</head>
+<body>
+
+  <!-- ===== header / nav ===== -->
+  <header>
+    <div class="logo">NEXORA</div>
+    <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
+    <nav id="navLinks">
+      <a href="NEXORA.html">Home</a>
+      <a href="aboutnexora.html">About Us</a>
+      <a href="nexoraservices.html">Services</a>
+      <a href="nexoraproducts.html" class="active">Products</a>
+      <a href="nexorablog.html">Blog</a>
+      <a href="nexoracontact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== hero ===== -->
+  <section class="hero">
+    <h1 class="animate__animated animate__bounce" style="text-align: left;">Our Products</h1>
+    <p>Discover cutting‑edge products that are bound to keep you entertained all at unbeatable prices.</p>
+  </section>
+
+  <!-- ===== product grid ===== -->
+  <section class="gallery">
+
+    <div>
+      <img src="https://files.selar.co/product-images/2025/products/chuks-prosper1/the-last-stand-of-paris-selar.com-67b2505394d0e.jpg"alt="Smartwatch">
+      <p class="caption">The Last Stand Of Paris - By Chuks Prosper</p>
+      <p class="price"><span class="old">₦4,400</span><span class="new">₦4,000</span></p>
+      <p class="desc">In the heart of Paris, a storm is brewing—one that will change history forever. The Last Stand of Paris is a gripping true crime thriller that uncovers secrets, betrayals, and a fight for survival in the City of Light. As darkness creeps through the streets, a tangled web of mystery unfolds, revealing shocking truths hidden for years.
+
+        🔍 What’s inside?
+        
+        ✔️ A real-life crime that shook Paris
+        
+        ✔️ Twists, suspense, and a fight for justice
+        
+        ✔️ The untold story of courage and betrayal</p>
+     <a button class="buy-now" href="https://selar.com/v612n3">Buy Now</button></a>
+    </div>
+
+    <div>
+      <img src="elon musk book.jpg" alt="Gaming Laptop" style="height: 1000px;">
+      <p class="caption">Elon Musk The Visionary Who Redefined The Future - By Chuks Prosper</p>
+      <p class="price"><span class="old">₦6,500</span><span class="new">₦6,000</span></p>
+      <p class="desc">Elon Musk is more than just a billionaire—he’s a visionary reshaping the future of humanity. From Tesla’s electric revolution to SpaceX’s mission to Mars, this book dives deep into his journey, innovations, and the mindset that makes him one of the most influential figures of our time. Whether you're an entrepreneur, a tech enthusiast, or just curious about the man behind the headlines, this book will give you an inside look at Musk’s world.
+
+        🚀 Learn about:
+        
+        ✅ His rise from a curious kid to a global icon</p>
+      <a button class="buy-now" href="https://selar.com/c78q0m">Buy Now</button></a>
+    </div>
+
+   
+
+  </section>
+
+  <!-- ===== footer ===== -->
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/2349049720367"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:nexorastech@gmail.com" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      
+    </div>
+    <p>&copy; 2025 NEXORA. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
