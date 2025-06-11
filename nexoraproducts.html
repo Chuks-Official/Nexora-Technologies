@@ -14,6 +14,51 @@
   <link rel="icon" href="NEXORA.png">
 
   <style>
+    /* Cube Loader Styles */
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spinCube 2s linear infinite;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: url('NEXORA.png') center/cover no-repeat;
+      border: 2px solid #00bfff;
+    }
+
+    .front  { transform: translateZ(50px); }
+    .back   { transform: rotateY(180deg) translateZ(50px); }
+    .right  { transform: rotateY(90deg) translateZ(50px); }
+    .left   { transform: rotateY(-90deg) translateZ(50px); }
+    .top    { transform: rotateX(90deg) translateZ(50px); }
+    .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+    @keyframes spinCube {
+      from { transform: rotateX(0deg) rotateY(0deg); }
+      to { transform: rotateX(360deg) rotateY(360deg); }
+    }
     /* ===== core palette / reset (same as Home page) ===== */
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
     html,body{height:100%;background:#000;color:#fff;display:flex;flex-direction:column;scroll-behavior:smooth;}
@@ -21,7 +66,21 @@
     /* ===== header / nav ===== */
     header{background:#111;padding:1em 2em;display:flex;justify-content:space-between;align-items:center;
            position:sticky;top:0;z-index:100;animation:slideDown 1s ease-in-out;}
-    .logo{font-size:1.8em;color:#00bfff;font-weight:bold;}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      font-size: 1.8em;
+      color: #00bfff;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 70px;
+      width: 70px;
+      object-fit: contain;
+      border-radius: 100px
+    }
     nav{display:flex;gap:1em;transition:.5s;}
     nav a{color:#fff;text-decoration:none;transition:.3s;}
     nav a:hover,nav a.active{color:#00bfff;transform:scale(1.1);}
@@ -85,18 +144,191 @@
     @keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
     @keyframes slideUp{from{transform:translateY(100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
     @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+      #chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #00bfff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00bfffcc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #000;
+    z-index: 10000;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  #chatbot-icon:hover {
+    background: #0099cc;
+    color: #fff;
+  }
+
+  /* Chatbot window container */
+  #chatbot {
+    position: fixed;
+    bottom: 90px; /* place above the icon */
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00bfffcc;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    color: #ddd;
+    z-index: 10000;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+  #chatbot.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #chatbot header {
+    background: #00bfff;
+    color: #000;
+    font-weight: 700;
+    padding: 0.7em 1em;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  #chatbot .close-btn {
+    font-weight: 700;
+    color: #000;
+    font-size: 1.2em;
+    user-select: none;
+    cursor: pointer;
+    padding: 0 5px;
+  }
+
+  #chatbot .chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #00bfff transparent;
+  }
+  #chatbot .chat-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  #chatbot .chat-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #chatbot .chat-body::-webkit-scrollbar-thumb {
+    background-color: #00bfff;
+    border-radius: 3px;
+  }
+
+  .message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    line-height: 1.3;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+   @media(max-width:200px){
+      
+      #chatbot{font-size:clamp(1.4rem,7vw,2rem);}
+    }
+  .message.user {
+    background: #005f99;
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 0 6px #004466;
+  }
+  .message.bot {
+    background: #00bfff;
+    color: #000;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 0 8px #0099cc;
+  }
+
+  #chatbot form.chat-input-container {
+    display: flex;
+    border-top: 1px solid #00bfff;
+    background: #111;
+  }
+  #chatbot input[type="text"] {
+    flex: 1;
+    border: none;
+    padding: 0.6em 1em;
+    font-size: 1em;
+    background: #222;
+    color: #ddd;
+    outline: none;
+    border-radius: 0 0 0 10px;
+    transition: background-color 0.3s;
+  }
+  #chatbot input[type="text"]:focus {
+    background: #333;
+  }
+  #chatbot button.send-btn {
+    background: #00bfff;
+    border: none;
+    color: #000;
+    padding: 0 1.2em;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 0 0 10px 0;
+    transition: background-color 0.3s;
+  }
+  #chatbot button.send-btn:hover {
+    background: #0099cc;
+    color: #fff;
+  }
+   #typing-indicator {
+    display: none;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
   </style>
 </head>
 <body>
-
+<div id="loader">
+    <div class="cube">
+      <div class="cube-face front"></div>
+      <div class="cube-face back"></div>
+      <div class="cube-face right"></div>
+      <div class="cube-face left"></div>
+      <div class="cube-face top"></div>
+      <div class="cube-face bottom"></div>
+    </div>
+  </div>
   <!-- ===== header / nav ===== -->
   <header>
-    <div class="logo">NEXORA</div>
+   <div class="logo">
+      <img src="NEXORA.png" alt="NEXORA Logo" />
+
+    </div>
     <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
     <nav id="navLinks">
       <a href="NEXORA.html">Home</a>
       <a href="aboutnexora.html">About Us</a>
       <a href="nexoraservices.html">Services</a>
+       <a href="nexoraprojects.html">Projects</a>
       <a href="nexoraproducts.html" class="active">Products</a>
       <a href="nexorablog.html">Blog</a>
       <a href="nexoracontact.html">Contact</a>
@@ -140,18 +372,20 @@
       <a button class="buy-now" href="https://selar.com/c78q0m">Buy Now</button></a>
     </div>
 
+
    
 
   </section>
+<!-- Chatbot window -->
 
   <!-- ===== footer ===== -->
   <footer>
     <div class="social-icons">
       <a href="#"><i class="fab fa-facebook"></i></a>
       <a href="https://wa.me/2349049720367"><i class="fab fa-whatsapp"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="https://tiktok.com/@nexoratech815"><i class="fab fa-tiktok"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.youtube.com/@NexoraTechnologies"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
       <a href="#"><i class="fab fa-x-twitter"></i></a>
       <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="mailto:nexorastech@gmail.com" title="Email">
@@ -161,8 +395,155 @@
     </div>
     <p>&copy; 2025 NEXORA. All rights reserved.</p>
   </footer>
+   <!-- Chatbot floating icon -->
+<div id="chatbot-icon" aria-label="Open chat" role="button" tabindex="0" title="Chat with us!👋🏾👋🏾👋🏾"><img style="width: 60px; height: 60px; border-radius: 70px; animation: pulse 2s infinite;" src="NexBot.jpg"></div>
 
+
+<div id="chatbot" role="complementary" aria-live="polite" aria-atomic="false" aria-hidden="true">
+  <header  style="font-size: larger;">
+    <img style="width: 50px; height: 50px; border-radius: 70px;" src="NexBot.jpg">
+     <h2>NexBot</h2>
+    <span class="close-btn" aria-label="Close chat" title="Close Chat">&times;</span>
+  </header>
+  <div class="chat-body" id="chat-body"></div>
+   <div id="typing-indicator">Chatbot is typing...</div>
+  <form class="chat-input-container" aria-label="Send message form">
+    <input type="text" aria-label="Type your message" placeholder="Ask me something..." autocomplete="ff" autocorrect="on" required />
+    <button type="submit" class="send-btn" aria-label="Send message">SEND</button>
+  </form>
+</div>
   <script>
+    const chatbotIcon = document.getElementById('chatbot-icon');
+  const chatbot = document.getElementById('chatbot');
+  const closeBtn = chatbot.querySelector('.close-btn');
+  const chatBody = document.getElementById('chat-body');
+  const chatForm = chatbot.querySelector('form');
+  const chatInput = chatbot.querySelector('input[type="text"]');
+   const typingIndicator = document.getElementById('typing-indicator');
+
+
+  // Function to append a message bubble
+  function appendMessage(message, sender = 'bot') {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', sender);
+    msgDiv.textContent = message;
+    chatBody.appendChild(msgDiv);
+    // Scroll to bottom
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  // Simple bot responses for demo (can be expanded)
+  function getBotResponse(userText) {
+    const text = userText.toLowerCase();
+     if (text.includes('hello') || text.includes('hi')) {
+      return "Hello! How can I help you today?";
+    }
+     if (text.includes('when was this company founded') || text.includes('when was nexora founded') || text.includes('when was this organization founded')) {
+      return "Nexora Technologies was founded on May, 19th, 2025 ";
+    }
+    if (text.includes('who are you') ){
+      return "I am NexBot 🤖, Nexora's official AI assistant. How can I assist you today 😊?";
+    }
+if (text.includes('what are nexoras services') || text.includes('what are nexora services')) {
+      return "We offer web development, AI solutions, and tech consulting.";
+    }
+if (text.includes('who are Nexora founders') || text.includes('Nexora founders') || text.includes('founders')) {
+      return "Nexora was founded by a group of five(5) passionate individuals which are as follows; Nwadire Prosper Chuks (Managing Director and Head of Operations), Daniel Efe Pender (Administrative Officer and lead developer), Eke David Ifeanyi (UI/UX Designer), Okechukwu Emmanuel (Projects Manager) and Obiezi Chigozie (Human Resource Manager). Thier passion led them to forming an alliance with the mission bring a real impact to the world through technology.";
+    }
+      if (text.includes('ok')  || text.includes('ok thanks')) {
+      return "I'm glad I was able to help. Do you have any more questions?";
+    }
+      if (text.includes('no')  || text.includes('that would be all for now') || text.includes('no more questions') || text.includes('none')  || text.includes('nothing else') || text.includes('bye')) {
+      return "Feel free to reach out to me anytime. BYE👋🏾";
+    }
+    if (text.includes('thanks') || text.includes('thanks a lot')|| text.includes('thank you so much') || text.includes('thank you very much' ) || text.includes('thank you')) {
+      return "You're welcome! Feel free to ask anything else.";
+    }
+    if (text.includes('services')) {
+      return "We offer web development, AI solutions, and tech consulting.";
+    }
+    if (text.includes('team')) {
+      return "Our team includes experts in software, finance, and operations.";
+    }
+   if (text.includes('contact') || text.includes('how can i connect with nexora') || text.includes('how can i contact nexora')|| text.includes('how to contact nexora')|| text.includes('how to contact the organization')|| text.includes('how to contact the company')|| text.includes('how to contact nexora tech') || text.includes('how to contact nexora technologies') || text.includes('how can i contact nexora tech') || text.includes('how can i contact nexora technologies') || text.includes('how can i connect with nexora tech') || text.includes('how can i connect with nexora technologies')) {
+      return "You can contact and connect us with via the Contact page or email at nexorastech@gmail.com";
+    }
+    if (text.includes('thank')) {
+      return "You're welcome! Feel free to ask anything else.";
+    }
+    return "I'm here to help! Could you please rephrase or ask something else?";
+  }
+
+  // Open chatbot window and greet
+  function openChatbot() {
+    chatbot.classList.add('open');
+    chatbot.setAttribute('aria-hidden', 'false');
+    chatbotIcon.style.display = 'none';
+    // Clear chat on open (optional)
+    // chatBody.innerHTML = '';
+
+    // Check if greeting already present to avoid duplicates
+    if (!chatBody.querySelector('.message.bot')) {
+       appendMessage("Hello! I am NexBot 🤖 How can I help you today?", 'bot');
+    }
+    chatInput.focus();
+  }
+
+  // Close chatbot window and show icon
+  function closeChatbot() {
+    chatbot.classList.remove('open');
+    chatbot.setAttribute('aria-hidden', 'true');
+    chatbotIcon.style.display = 'flex';
+  }
+
+  // Event: Click on icon opens chatbot
+  chatbotIcon.addEventListener('click', openChatbot);
+  chatbotIcon.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openChatbot();
+    }
+  });
+
+  // Event: Close button click closes chatbot
+  closeBtn.addEventListener('click', closeChatbot);
+
+  // Handle message submission
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const userText = chatInput.value.trim();
+    if (!userText) return;
+    appendMessage(userText, 'user');
+    chatInput.value = '';
+    chatInput.focus();
+
+    setTimeout(() => {
+      const botReply = getBotResponse(userText);
+      appendMessage(botReply, 'bot');
+    }, 700);
+  });
+   
+     window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+
+  // Keep the loader visible for 10 seconds
+  setTimeout(() => {
+    loader.classList.add('hide');
+
+    // Animate page elements after loader hides
+    document.querySelectorAll('header, .hero, .gallery, footer').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 1s ease, transform 1s ease';
+
+      // Animate in after loader fade out (1 second)
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 1000); // 1s delay after loader fades out
+    });
+  }, 3000); // 10 seconds loader delay
+});
     function toggleMenu(){
       document.getElementById('navLinks').classList.toggle('show');
     }
