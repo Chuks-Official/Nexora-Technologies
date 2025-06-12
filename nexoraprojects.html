@@ -455,16 +455,16 @@
       text-align: left;
     
     }
-main.projects-container {
-     flex: 1;
+  main.blog-container {
+      flex: 1;
       padding: 3em 2em;
       max-width: 900px;
       margin: 0 auto;
       animation: fadeIn 2s ease-in-out;
-      width: 300px;
-    
-}
-.blog-post {
+      width: 100%;
+    }
+
+    .blog-post {
       display: flex;
       gap: 1.5em;
       background: #111;
@@ -481,7 +481,16 @@ main.projects-container {
     .post-image {
       flex-shrink: 0;
       width: 100%;
-      height: 100%;
+      height: 50%;
+
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 0 8px #00bfffaa;
+    }
+     .post-video {
+      flex-shrink: 0;
+      width: 100%;
+
       border-radius: 8px;
       object-fit: cover;
       box-shadow: 0 0 8px #00bfffaa;
@@ -504,6 +513,27 @@ main.projects-container {
       margin-bottom: 0.8em;
       line-height: 1.4;
     }
+    .chat-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+  z-index: 9999;
+}
+
+.chat-greeting {
+  background-color: #00bfffaa;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  margin-bottom: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  display: inline-block;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -558,7 +588,12 @@ main.projects-container {
         <img src="quiznewest.PNG" alt="Quiz App">
         <div class="description">Quiz App with timer and score</div>
       </div>
-    
+     
+     <div class="slide">
+        <img src="ice cram 2.jpg" alt="Quiz App">
+        <div class="description">Ice Cream Site</div>
+      </div>
+  
       <div class="slide">
         <img src="emoji translator.PNG" alt="Emoji Translator">
         <div class="description">Emoji Translator</div>
@@ -578,40 +613,86 @@ main.projects-container {
 
 
 </section>
-  <main class="projects-container">
+ <main class="blog-container">
     <article class="blog-post">
-       <div class="post-content">
-        <h2 class="post-title">A QUIZ APP</h2>
-        <p class="post-snippet" >
-             Nexora Developers designed and deployed a quiz site that allows users (especially schools) to carry out tests online and at the end of the test, they are enabled to see their scores.
-        </p>
-    </div>
-      <img src="quiznewest.PNG" alt="Tech Innovations" class="post-image" />
       
-     
+      <div class="post-content">
+        <h2 class="post-title">Nexora Quiz Website</h2>
+        <p class="post-snippet">
+     Nexora Developers created an interactive and educational quiz web application called Nexora Quiz Master. It is designed to help students and learners test their knowledge across various subjects such as Science, English, Coding, and more. The platform uses HTML, CSS, and JavaScript to deliver a sleek, responsive, and user-friendly interface that works well on both mobile and desktop devices.
+
+The quiz app features real-time scoring, instant feedback on answers, a countdown timer, and a subject selection option. One of its standout features is the voice support powered by the Web Speech API, which reads questions aloud for better accessibility and engagement. It also includes progress tracking, fun animations, and a modern techy design that encourages students to learn in a playful and stress-free environment.
+
+This project is beneficial because it transforms traditional test-taking into an enjoyable experience, saves time for both students and teachers, and supports independent learning. Schools and educational centers can also use the app to conduct assessments digitally, reducing the need for paper and manual marking.
+        </p>
+ 
+        <img src="quiznewest.PNG" alt="Tech Innovations" class="post-image" />
+      </div>
     </article>
-    <article class="blog-post">
+    
+     <article class="blog-post">
        <div class="post-content">
         <h2 class="post-title" >NUMBER BASE CONVERTER</h2>
-        <p class="post-snippet" >
-             Nexora Developers designed and deployed a site that can allow users to convert from one number base to another (decimal, binary, octal and hexadecimal) in real time. It is easy to use and navigate.
+        <p class="post-snippet"  >
+            Nexora Developers created a Number Base Converter, a fast and user-friendly web tool that allows users to convert numbers between binary, decimal, octal, and hexadecimal systems. Built using HTML, CSS, and JavaScript, the tool features a clean interface, instant conversion, and real-time output updates as the user types.
+
+It simplifies complex number base calculations, making it useful for students, programmers, and anyone learning computer science or digital electronics. The converter is responsive, easy to use, and helps users understand number systems more clearly, saving time and reducing manual errors during conversions.
         </p>
     </div>
       <img src="base converter.PNG" alt="Tech Innovations" class="post-image" />
       
      
-    </article><article class="blog-post">
+    </article>
+    <article class="blog-post">
        <div class="post-content">
-        <h2 class="post-title" >CURRENCY CONVERTER WEBSITE</h2>
+        <h2 class="post-title">CAR WEBSITE</h2>
         <p class="post-snippet"  >
-             Nexora Developers designed and deployed a site that allows users to convert from one currency to another in real time
+        Nexora Developers created a Car Sales Website, a sleek and fully responsive platform that allows users to browse, search, and purchase new and used vehicles with ease. Built using HTML, CSS, and JavaScript, the site features a modern interface with car listings, high-quality images, detailed specifications, and price filters to help buyers find the perfect vehicle.
+
+The website includes user-friendly navigation, contact forms for inquiries, and smooth animations for a professional look. It benefits both car dealers and buyers by making the sales process faster, more transparent, and accessible online—eliminating the need for physical visits and helping businesses reach a wider audience.
         </p>
         
     </div>
-      <img src="currency.PNG" alt="Tech Innovations" class="post-image" /></article></main>
+        <img src="automod.jpg" alt="tech Innovations" class="post-image"  style="width: 50%; height: 50%;"/>
+        
       
-     
-    
+     </article>
+      
+        
+      
+     </article>
+      <article class="blog-post">
+       <div class="post-content">
+        <h2 class="post-title">Ice Cream Sales Site</h2>
+        <p class="post-snippet"  >
+         Nexora Developers designed a colorful and engaging Ice Cream Website to showcase a variety of ice cream flavors, toppings, and treats. Built with HTML, CSS, and JavaScript, the site features a fun, vibrant layout with high-quality images, animated transitions, and interactive sections for users to explore products, view prices, and place orders.
+
+The website is fully responsive, making it easy to use on both mobile and desktop devices. It helps ice cream businesses attract more customers online, simplify the ordering process, and promote new flavors or special deals—making the user experience both enjoyable and deliciously inviting.
+        </p>
+        
+    </div>
+        <img src="ice cram 2.jpg" alt="tech Innovations" class="post-image"/>
+      
+     </article><article class="blog-post">
+       <div class="post-content">
+        <h2 class="post-title">AC CURRENT TO DC CURRENT CONVERTER</h2>
+        <p class="post-snippet"  >
+           Nexora Developers designed an AC to DC Current Converter, a practical electronic project that converts alternating current (AC) into direct current (DC) for safe and stable use in electronic devices. The system uses essential components such as transformers, rectifiers, and voltage regulators to ensure efficient and reliable conversion.
+
+This project is especially useful for powering low-voltage DC devices from standard AC mains supply. It helps prevent damage to sensitive electronics, promotes energy efficiency, and supports learning in electrical engineering and power systems. The converter is compact, safe, and ideal for both educational and practical applications.
+        </p>
+        
+    </div>
+     <iframe class="post-video" width="300" height="360" src="nexora robotic class.mp4" title="AC to DC converter"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      
+     </article>
+   
+   
+</main>
+  
+
+
+
 
   <!-- Your page header and content here -->
 
