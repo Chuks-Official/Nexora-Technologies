@@ -474,7 +474,10 @@
       box-shadow: 0 0 10px #00bfff33;
       transition: background 0.3s ease;
     }
-   
+    .blog-post:hover {
+      background: #001f3f;
+    }
+
     .post-image {
       flex-shrink: 0;
       width: 100%;
@@ -504,17 +507,6 @@
       color: #00bfff;
       margin-bottom: 0.5em;
     }
-    .read-more {
-      align-self: flex-start;
-      text-decoration: none;
-      color: #00bfff;
-      font-weight: 600;
-      border-bottom: 1.5px solid transparent;
-      transition: border-color 0.3s ease;
-    }
-    .read-more:hover {
-      border-color: #00bfff;
-    }
     .post-snippet {
       font-size: 1rem;
       color: #ccc;
@@ -540,8 +532,31 @@
   display: inline-block;
 }
 
+ #google_translate_element select {
+  background-color: #000;
+  color: #00bfff;
+  border: 1.5px solid #00bfff;
+  border-radius: 6px;
+  padding: 2px 6px;      /* smaller padding for compactness */
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-width: 60px
+}
 
 
+
+    #google_translate_element select:hover,
+    #google_translate_element select:focus {
+      background-color: #00bfff;
+      color: #000;
+      outline: none;}
+nav a:hover,
+    nav a.active {
+      color: #00bfff;
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -566,12 +581,13 @@
     <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
     <nav id="navLinks">
       <a href="NEXORA.html">Home</a>
-      <a href="aboutnexora.html" class="active">About Us</a>
+      <a href="aboutnexora.html" >About Us</a>
       <a href="nexoraservices.html">Services</a>
-       <a href="nexoraprojects.html">Projects</a>
+       <a href="nexoraprojects.html" class="active">Projects</a>
       <a href="nexoraproducts.html">Products</a>
       <a href="nexorablog.html">Blog</a>
       <a href="nexoracontact.html">Contact</a>
+      <div id="google_translate_element"></div>
     </nav>
   </header>
   <section class="hero">
@@ -632,8 +648,8 @@
 The quiz app features real-time scoring, instant feedback on answers, a countdown timer, and a subject selection option. One of its standout features is the voice support powered by the Web Speech API, which reads questions aloud for better accessibility and engagement. It also includes progress tracking, fun animations, and a modern techy design that encourages students to learn in a playful and stress-free environment.
 
 This project is beneficial because it transforms traditional test-taking into an enjoyable experience, saves time for both students and teachers, and supports independent learning. Schools and educational centers can also use the app to conduct assessments digitally, reducing the need for paper and manual marking.
-        </p> <a href="https://nexoraquizsite.vercel.app/quiz3.html" class="read-more">Check It Out</a> 
-        
+        </p>
+ 
         <img src="quiznewest.PNG" alt="Tech Innovations" class="post-image" />
       </div>
     </article>
@@ -658,7 +674,7 @@ It simplifies complex number base calculations, making it useful for students, p
         Nexora Developers created a Car Sales Website, a sleek and fully responsive platform that allows users to browse, search, and purchase new and used vehicles with ease. Built using HTML, CSS, and JavaScript, the site features a modern interface with car listings, high-quality images, detailed specifications, and price filters to help buyers find the perfect vehicle.
 
 The website includes user-friendly navigation, contact forms for inquiries, and smooth animations for a professional look. It benefits both car dealers and buyers by making the sales process faster, more transparent, and accessible online—eliminating the need for physical visits and helping businesses reach a wider audience.
-        </p><a href="https://auto-mod-cars.vercel.app" class="read-more">Check It Out</a>
+        </p>
         
     </div>
         <img src="automod.jpg" alt="tech Innovations" class="post-image"  style="width: 50%; height: 50%;"/>
@@ -738,6 +754,17 @@ This project is especially useful for powering low-voltage DC devices from stand
     </div>
     <p>&copy; 2025 NEXORA TECHNOLOGIES. All rights reserved.</p>
   </footer>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
     document.addEventListener("contextmenu", e => e.preventDefault());
