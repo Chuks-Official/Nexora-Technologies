@@ -380,6 +380,31 @@
     margin-bottom: 10px;
     font-size: 13px;
   }
+   #google_translate_element select {
+  background-color: #000;
+  color: #00bfff;
+  border: 1.5px solid #00bfff;
+  border-radius: 6px;
+  padding: 2px 6px;      /* smaller padding for compactness */
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-width: 60px
+}
+
+
+
+    #google_translate_element select:hover,
+    #google_translate_element select:focus {
+      background-color: #00bfff;
+      color: #000;
+      outline: none;}
+      nav a:hover,
+    nav a.active {
+      color: #00bfff;
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -407,6 +432,7 @@
       <a href="nexoraproducts.html">Products</a>
       <a href="nexorablog.html">Blog</a>
       <a href="nexoracontact.html">Contact</a>
+      <div id="google_translate_element"></div>
     </nav>
   </header>
 
@@ -505,6 +531,17 @@
     </div>
     <p>© 2025 NEXORA. All rights reserved.</p>
   </footer>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
     document.addEventListener("contextmenu", e => e.preventDefault());
@@ -519,6 +556,7 @@
         return false;
        }
       }
+
   const chatbotIcon = document.getElementById('chatbot-icon');
   const chatbot = document.getElementById('chatbot');
   const closeBtn = chatbot.querySelector('.close-btn');
